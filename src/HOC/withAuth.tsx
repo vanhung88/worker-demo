@@ -1,16 +1,14 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 
-const withAuth = (a) => {
-  return ({ ...props }) => {
-    console.log('props', props);
+const withAuth = (Component: any) =>
+  function ({ ...props }) {
     const token = null;
     useEffect(() => {
       if (!token) {
         console.log('PUSH to login');
       }
     }, []);
-    return <div />;
+    return <Component {...props} />;
   };
-};
 
 export default withAuth;
